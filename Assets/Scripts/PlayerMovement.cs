@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode right = KeyCode.D;
 
     public float moveSpeed;
+    public UnityEvent onPause;
 
     Rigidbody2D rb;
 
@@ -53,6 +55,11 @@ public class PlayerMovement : MonoBehaviour
 
         bool moving = vel!= Vector3.zero;
         animator.SetBool("Moving", moving);
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            onPause.Invoke();
+        }
 
     }
 
