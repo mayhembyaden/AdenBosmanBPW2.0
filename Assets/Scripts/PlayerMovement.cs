@@ -13,6 +13,10 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D rb;
 
+    Animator animator;
+
+    SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         Instance = this;
@@ -21,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -35,13 +41,18 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(left))
         {
             vel -= transform.right * moveSpeed;
+            spriteRenderer.flipX = false;
 
         }
         if (Input.GetKey(right))
         {
             vel += transform.right * moveSpeed;
+            spriteRenderer.flipX = true;
         }
         rb.velocity = new Vector2(vel.x, rb.velocity.y);
+
+        bool moving = vel!= Vector3.zero;
+        animator.SetBool("Moving", moving);
 
     }
 
