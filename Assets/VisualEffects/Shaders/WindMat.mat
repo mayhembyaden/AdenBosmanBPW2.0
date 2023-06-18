@@ -40,8 +40,8 @@ Material:
     m_Floats:
     - _WindInfluenceMask: 8
     - _WindScale: 1
-    - _WindSpeed: 1.87
-    - _WindStrenght: 3
+    - _WindSpeed: 1.62
+    - _WindStrenght: 0
     m_Colors:
     - _WindDirection: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
